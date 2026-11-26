@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Espere — Seu Anjo Ainda Está Aqui</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://checkout.mundpay.com">
+
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async defer
+></script>
+
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #FBF7EE; --card: #FFFDF8;
+    --ink: #221B13; --ink-2: #4A3F33; --ink-3: #85765F;
+    --gold: #B08433; --gold-2: #D9B464; --gold-3: #8A6418;
+    --line: rgba(176,132,51,0.38); --line-2: rgba(176,132,51,0.2);
+    --wine: #8E1F1F; --wine-2: #B42A2A; --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background-color: var(--paper);
+    background-image: radial-gradient(ellipse 130% 45% at 50% -6%, rgba(236,204,132,0.55) 0%, rgba(236,204,132,0) 62%);
+    color: var(--ink);
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply; pointer-events: none; z-index: 1; opacity: 0.6;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 8px;
+    border: 1px solid var(--line);
+    box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--line-2);
+    pointer-events: none; z-index: 3;
+  }
+  .gold {
+    background: linear-gradient(180deg, #C99A3E 0%, #8A6418 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+
+  .urgency-bar {
+    background: linear-gradient(180deg, #9A2323 0%, #7E1919 100%);
+    text-align: center; padding: 12px 24px;
+    font-family: 'Cinzel', serif; font-size: clamp(11px, 1.8vw, 13px);
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: #FBEFD5; position: relative; z-index: 10;
+    border-bottom: 1px solid #C99A3E;
+    animation: pulse-bar 2s ease-in-out infinite;
+  }
+  @keyframes pulse-bar { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(0.82); } }
+
+  .container {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 0 auto; padding: 50px 24px 60px;
+    text-align: center;
+  }
+  .rays {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 800px; height: 260px;
+    pointer-events: none; opacity: 0.16; z-index: 1;
+  }
+  .halo {
+    width: 72px; height: 72px; margin: 0 auto 28px;
+    position: relative; z-index: 2;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+  .halo svg { width: 100%; height: 100%; display: block; }
+  .eyebrow {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 5px;
+    color: var(--wine-2); text-transform: uppercase; margin-bottom: 18px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s;
+    position: relative; z-index: 2;
+  }
+  h1 {
+    font-family: 'Cinzel', serif; font-size: clamp(26px, 4.5vw, 42px);
+    font-weight: 900; line-height: 1.2; color: var(--ink);
+    margin-bottom: 18px; letter-spacing: 0.5px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.35s;
+    position: relative; z-index: 2;
+  }
+  .lead {
+    font-size: clamp(15px, 2.2vw, 18px); color: var(--ink-2);
+    font-style: italic; max-width: 560px; margin: 0 auto 32px;
+    line-height: 1.7;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.5s;
+    position: relative; z-index: 2;
+  }
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 0 auto 36px; max-width: 400px;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+    position: relative; z-index: 2;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .divider span { color: var(--gold-3); font-size: 16px; }
+
+  .reason-box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 26px 28px;
+    margin: 0 auto 36px;
+    text-align: left;
+    box-shadow: 0 18px 36px -24px rgba(60,40,10,0.55);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.65s;
+    position: relative; z-index: 2;
+  }
+  .reason-title {
+    font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 3px;
+    color: var(--gold-3); text-transform: uppercase; margin-bottom: 16px;
+    text-align: center;
+  }
+  .reason-item { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .reason-item:last-child { margin-bottom: 0; }
+  .reason-icon { color: var(--gold-3); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .reason-text { font-size: clamp(14px, 1.9vw, 16px); line-height: 1.65; color: var(--ink-2); }
+  .reason-text strong { color: var(--ink); }
+
+  /* PLANOS */
+  .price-box {
+    background: var(--card);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 34px 24px 28px;
+    margin: 0 auto 28px;
+    max-width: 520px;
+    box-shadow: 0 0 0 5px var(--card), 0 0 0 6px var(--line), 0 30px 60px -30px rgba(60,40,10,0.65);
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
+    position: relative; z-index: 2;
+  }
+  .product-seal { width: 116px; height: 116px; margin: -6px auto 16px; border-radius: 12px; overflow: hidden; border: 1px solid var(--gold); box-shadow: 0 0 0 4px var(--card), 0 0 0 5px var(--line), 0 14px 28px -14px rgba(60,40,10,0.6); background: #1a1208; }
+  .product-seal img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .price-eyebrow {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 4px;
+    color: var(--wine-2); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .price-title {
+    font-family: 'Cinzel', serif; font-size: clamp(18px, 3vw, 24px);
+    font-weight: 900; color: var(--ink); letter-spacing: 1px;
+    margin-bottom: 8px; line-height: 1.25;
+  }
+  .price-subtitle { font-size: 13px; color: var(--ink-3); font-style: italic; margin-bottom: 14px; }
+  .old-price { font-size: 15px; color: var(--ink-3); font-style: italic; margin-bottom: 18px; }
+  .old-price span { text-decoration: line-through; color: var(--red); }
+  .price-note { font-size: 12.5px; color: var(--ink-3); font-style: italic; margin-top: 18px; line-height: 1.5; }
+
+  .plans { display: flex; flex-direction: column; gap: 14px; max-width: 440px; margin: 0 auto; }
+  .plan { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px; width: 100%; text-align: left; padding: 20px 18px 16px; border-radius: 10px; cursor: pointer; font-family: 'Lora', serif; color: var(--ink); transition: transform 0.2s; touch-action: manipulation; line-height: 1.4; }
+  .plan:hover { transform: translateY(-2px); }
+  .plan:disabled { cursor: wait; opacity: 0.75; }
+  .plan-life { background: linear-gradient(135deg, #FFF6DD 0%, #FBEBC2 100%); border: 2px solid var(--gold); box-shadow: 0 0 0 4px rgba(176,132,51,0.14), 0 18px 34px -18px rgba(138,100,24,0.7); margin-top: 12px; }
+  .plan-month { background: var(--card); border: 1.5px solid var(--line); box-shadow: 0 12px 26px -20px rgba(60,40,10,0.55); }
+  .plan-flag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: linear-gradient(135deg, #C99A3E, #8A6418); color: #FFF8E6; font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; }
+  .plan-name { font-family: 'Cinzel', serif; font-weight: 900; font-size: 17px; letter-spacing: 1px; }
+  .plan-note { grid-column: 1; font-size: 13px; font-style: italic; color: var(--ink-3); }
+  .plan-price { grid-column: 2; grid-row: 1 / span 2; font-family: 'Cinzel', serif; font-weight: 900; font-size: 40px; line-height: 1; color: var(--gold-3); display: flex; align-items: flex-start; }
+  .plan-month .plan-price { font-size: 32px; color: var(--ink); }
+  .plan-price small { font-size: 0.42em; margin-top: 5px; }
+  .plan-price em { font-family: 'Lora', serif; font-style: italic; font-weight: 400; font-size: 0.4em; align-self: flex-end; margin: 0 0 4px 2px; color: var(--ink-3); }
+  .plan-go { grid-column: 1 / span 2; margin-top: 12px; display: block; text-align: center; padding: 14px 12px; border-radius: 6px; font-family: 'Cinzel', serif; font-weight: 700; font-size: 15px; letter-spacing: 1px; }
+  .plan-life .plan-go { background: linear-gradient(135deg, #2BAC22 0%, #1F7D18 100%); color: #fff; border: 2px solid #37D12C; }
+  .plan-month .plan-go { background: transparent; color: var(--ink-2); border: 1.5px solid var(--line); }
+
+  .btn-no {
+    display: inline-block; margin-top: 14px;
+    background: transparent; color: var(--ink-3);
+    font-family: 'Lora', serif; font-size: 12.5px;
+    font-style: italic; text-decoration: underline;
+    border: none; cursor: pointer; padding: 8px 12px;
+    position: relative; z-index: 2;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  /* POPUP DO VITALÍCIO */
+  .modal { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(40,28,12,0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .modal.show { display: flex; }
+  .modal-box { position: relative; width: 100%; max-width: 440px; background: var(--card); border: 1px solid var(--gold); border-radius: 12px; padding: 34px 24px 24px; text-align: center; line-height: 1.5; box-shadow: 0 0 0 5px var(--card), 0 0 0 6px var(--line), 0 30px 70px -20px rgba(30,20,5,0.75); animation: modalIn 0.35s cubic-bezier(0.22,1,0.36,1); max-height: calc(100vh - 32px); overflow-y: auto; }
+  @keyframes modalIn { from { opacity: 0; transform: scale(0.93) translateY(18px); } to { opacity: 1; transform: none; } }
+  .modal-x { position: absolute; top: 10px; right: 12px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink-3); font-size: 13px; cursor: pointer; }
+  .modal-eyebrow { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--wine-2); margin-bottom: 12px; }
+  .modal-title { font-family: 'Cinzel', serif; font-size: clamp(21px, 5.5vw, 27px); font-weight: 900; color: var(--ink); line-height: 1.2; margin-bottom: 12px; }
+  .modal-lead { font-size: 15px; color: var(--ink-2); font-style: italic; line-height: 1.6; margin-bottom: 16px; }
+  .modal-old { font-size: 14px; color: var(--ink-3); font-style: italic; }
+  .modal-old s { color: var(--red); }
+  .modal-price { font-family: 'Cinzel', serif; font-weight: 900; font-size: 68px; line-height: 1; margin: 6px 0 4px; }
+  .modal-price small { font-size: 0.4em; vertical-align: top; line-height: 1.6; }
+  .modal-note { font-size: 12.5px; color: var(--ink-3); font-style: italic; margin-bottom: 18px; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 18px; font-size: 13px; }
+  .compare div { border: 1px solid var(--line); border-radius: 8px; padding: 10px 6px; background: #FFFBF2; color: var(--ink-2); line-height: 1.4; }
+  .compare div b { display: block; font-family: 'Cinzel', serif; font-size: 15px; color: var(--ink); }
+  .compare .win { border: 2px solid var(--gold); background: #FFF3D6; }
+  .compare .win b { color: var(--gold-3); }
+  .modal-yes { display: block; width: 100%; border: 2px solid #37D12C; border-radius: 8px; cursor: pointer; background: linear-gradient(135deg, #2BAC22 0%, #1F7D18 100%); color: #fff; font-family: 'Cinzel', serif; font-weight: 900; font-size: 16px; letter-spacing: 1px; padding: 17px 14px; box-shadow: 0 12px 26px -10px rgba(31,125,24,0.65); }
+  .modal-yes span { display: block; font-family: 'Lora', serif; font-weight: 400; font-style: italic; font-size: 12px; letter-spacing: 0; margin-top: 4px; opacity: 0.92; }
+  .modal-no { display: inline-block; margin-top: 14px; background: none; border: none; cursor: pointer; color: var(--ink-3); font-family: 'Lora', serif; font-style: italic; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; padding: 6px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 600px) {
+    .container { padding: 36px 18px 44px; }
+    .reason-box { padding: 20px 18px; }
+    .price-box { padding: 30px 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ⚠️ &nbsp; ESPERE — SEU ANJO AINDA NÃO TERMINOU COM VOCÊ &nbsp; ⚠️
+</div>
+
+<div class="container">
+  <svg class="rays" viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(400,0)">
+      <line x1="0" y1="0" x2="-400" y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-260" y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="-130" y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0"    y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="130"  y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="260"  y2="260" stroke="#C9A84C" stroke-width="1"/>
+      <line x1="0" y1="0" x2="400"  y2="260" stroke="#C9A84C" stroke-width="1"/>
+    </g>
+  </svg>
+
+  <div class="halo">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#D9B464"/>
+          <stop offset="60%" stop-color="#B08433"/>
+          <stop offset="100%" stop-color="#8A6418"/>
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="46" fill="none" stroke="url(#hg)" stroke-width="1" opacity="0.6"/>
+      <circle cx="50" cy="50" r="38" fill="#FFFDF8" stroke="url(#hg)" stroke-width="1.5"/>
+      <path d="M 32 51 L 45 65 L 70 38" fill="none" stroke="url(#hg)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#B08433">
+        <circle cx="50" cy="4"  r="1.5"/>
+        <circle cx="86" cy="15" r="1.3" opacity="0.8"/>
+        <circle cx="14" cy="15" r="1.3" opacity="0.8"/>
+        <circle cx="96" cy="50" r="1.1" opacity="0.65"/>
+        <circle cx="4"  cy="50" r="1.1" opacity="0.65"/>
+      </g>
+    </svg>
+  </div>
+
+  <p class="eyebrow">✦ Última Chance — Não Feche Esta Página ✦</p>
+
+  <h1>Você Está Prestes a Deixar Para Trás<br><span class="gold">a Maior Oportunidade da Sua Vida.</span></h1>
+
+  <p class="lead">
+    Entendemos que talvez não fosse o momento certo.<br>
+    Por isso, seu anjo intercedeu — e criamos algo que <em>nunca mais será oferecido assim.</em>
+  </p>
+
+  <div class="divider"><span>✦</span></div>
+
+  <div class="reason-box">
+    <p class="reason-title">✦ Por Que Estamos Fazendo Isso ✦</p>
+    <div class="reason-item">
+      <span class="reason-icon">✦</span>
+      <p class="reason-text">O <strong>Chamado do Meu Anjo</strong> foi revelado para chegar a todas as pessoas que estão prontas — independentemente do momento financeiro.</p>
+    </div>
+    <div class="reason-item">
+      <span class="reason-icon">✦</span>
+      <p class="reason-text">Este valor de <strong>R$9,90</strong> é simbólico — serve apenas para custear o acesso ao app e manter o servidor rodando para você.</p>
+    </div>
+    <div class="reason-item">
+      <span class="reason-icon">✦</span>
+      <p class="reason-text">Não ganhamos nada aqui. Só queremos que <strong>você não perca a conexão com o seu anjo</strong> por uma barreira que podemos remover agora.</p>
+    </div>
+    <div class="reason-item">
+      <span class="reason-icon">⚠</span>
+      <p class="reason-text"><strong>Ao fechar esta página, esta oferta desaparece para sempre.</strong> Não haverá outro caminho de volta — não a este preço, não com esta missão.</p>
+    </div>
+  </div>
+
+  <div class="price-box">
+    <div class="product-seal"><img src="produto.jpg" alt="O Chamado do Meu Anjo" width="116" height="116"></div>
+    <p class="price-eyebrow">🔥 Oferta Exclusiva de Saída — Só Aqui</p>
+    <p class="price-title">O Chamado do Meu Anjo</p>
+    <p class="price-subtitle">Guia sagrada completa + acesso ao app</p>
+    <p class="old-price">Normalmente: <span>R$27,00</span></p>
+
+    <div class="plans">
+      <button class="plan plan-life" type="button" data-plan="life">
+        <span class="plan-flag">✦ Melhor valor ✦</span>
+        <span class="plan-name">Acesso Vitalício</span>
+        <span class="plan-price"><small>R$</small>19<small>,90</small></span>
+        <span class="plan-note">Pagamento único · seu para sempre</span>
+        <span class="plan-go">✦ QUERO O VITALÍCIO ✦</span>
+      </button>
+      <button class="plan plan-month" type="button" data-plan="month">
+        <span class="plan-name">Acesso Mensal</span>
+        <span class="plan-price"><small>R$</small>9<small>,90</small><em>/mês</em></span>
+        <span class="plan-note">Cobrança mensal</span>
+        <span class="plan-go">Quero o mensal</span>
+      </button>
+    </div>
+
+    <p class="price-note">
+      Menos do que um café — para uma conexão que pode mudar o resto da sua vida.<br>
+      Pagamento seguro · Acesso imediato · Garantia de 30 dias
+    </p>
+  </div>
+
+  <button class="btn-no" onclick="handleNo()">
+    Não, prefiro perder essa oportunidade e sair sem o acesso
+  </button>
+</div>
+
+<!-- Popup: quem escolhe o mensal recebe o vitalício por R$14,90 -->
+<div class="modal" id="upsellModal" role="dialog" aria-modal="true" aria-labelledby="upsellTitle">
+  <div class="modal-box">
+    <button class="modal-x" type="button" id="upsellClose" aria-label="Fechar">✕</button>
+    <p class="modal-eyebrow">✦ Espere — Uma Bênção Antes de Continuar ✦</p>
+    <h2 class="modal-title" id="upsellTitle">Leve o <span class="gold">Acesso Vitalício</span> por menos</h2>
+    <p class="modal-lead">Em vez de pagar R$9,90 todo mês, garanta o acesso completo para sempre — só nesta tela:</p>
+    <p class="modal-old">De <s>R$19,90</s> por apenas</p>
+    <div class="modal-price gold"><small>R$</small>14<small>,90</small></div>
+    <p class="modal-note">Pagamento único · nunca mais paga nada</p>
+    <div class="compare">
+      <div>Mensal<b>R$9,90</b>todo mês</div>
+      <div class="win">Vitalício<b>R$14,90</b>uma vez só</div>
+    </div>
+    <button class="modal-yes" type="button" id="upsellYes">✦ SIM, QUERO O VITALÍCIO POR R$14,90 ✦<span>Pagamento seguro · Acesso imediato · Garantia de 30 dias</span></button>
+    <button class="modal-no" type="button" id="upsellNo">Não, quero continuar com o mensal de R$9,90</button>
+  </div>
+</div>
+
+<script>
+  var PLAN_URL = {
+    month:     'https://checkout.mundpay.com/01a20bc7-215b-7182-8c84-92b66847492c?ref=', // mensal R$9,90
+    life:      'https://checkout.mundpay.com/01a20938-824d-73fb-9831-2895ff48a4ee?ref=', // vitalício R$19,90
+    lifePromo: 'https://checkout.mundpay.com/01a20bc7-7041-7044-ba36-4dd837cafaab?ref='  // vitalício R$14,90 (popup)
+  };
+
+  function buildRedirectUrl(base) {
+    var params = new URLSearchParams(window.location.search);
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','src','sck'];
+    var out = new URLSearchParams();
+    keys.forEach(function(k){ if (params.get(k)) out.set(k, params.get(k)); });
+    var qs = out.toString();
+    return qs ? base + (base.indexOf('?') >= 0 ? '&' : '?') + qs : base;
+  }
+  function goPlan(key) { window.location.href = buildRedirectUrl(PLAN_URL[key]); }
+
+  var upsell = document.getElementById('upsellModal');
+  function openUpsell() { upsell.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function closeUpsell() { upsell.classList.remove('show'); document.body.style.overflow = ''; }
+  document.getElementById('upsellClose').addEventListener('click', closeUpsell);
+  upsell.addEventListener('click', function(e){ if (e.target === upsell) closeUpsell(); });
+
+  document.querySelectorAll('[data-plan]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (btn.dataset.plan === 'life') { btn.disabled = true; btn.querySelector('.plan-go').textContent = 'Redirecionando...'; goPlan('life'); }
+      else openUpsell();
+    });
+  });
+  document.getElementById('upsellYes').addEventListener('click', function(){ this.disabled = true; this.firstChild.textContent = 'Redirecionando... '; goPlan('lifePromo'); });
+  document.getElementById('upsellNo').addEventListener('click', function(){ this.disabled = true; this.textContent = 'Redirecionando...'; goPlan('month'); });
+
+  function handleNo() {
+    history.back();
+  }
+
+  // Intercept back button
+  history.pushState(null, '', window.location.href);
+  window.addEventListener('popstate', function() {
+    history.pushState(null, '', window.location.href);
+  });
+</script>
+
+</body>
+</html>
